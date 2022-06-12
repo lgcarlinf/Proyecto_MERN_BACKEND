@@ -4,9 +4,9 @@ import connectDB from "./config/db.js";
 import cors from "cors";
 import veterinarioRoutes from "./routes/veterinarioRoutes.js";
 import pacienteRoutes from "./routes/pacienteRoutes.js";
-import { compareSync } from "bcrypt";
 
 const app = express();
+app.use(express.json());
 dotenv.config();
 connectDB();
 
@@ -21,7 +21,6 @@ const corsOptions = {
   },
 };
 
-app.use(express.json());
 app.use(cors(corsOptions));
 
 app.use("/api/veterinarios", veterinarioRoutes);
